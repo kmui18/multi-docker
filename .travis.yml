@@ -14,3 +14,8 @@ after_success:
   - docker build -t kmui18/multi-nginx ./nginx
   - docker build -t kmui18/multi-server ./server
   - docker build -t kmui18/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push kmui18/multi-client
+  - docker push kmui18/multi-nginx
+  - docker push kmui18/multi-server
+  - docker push kmui18/multi-worker
